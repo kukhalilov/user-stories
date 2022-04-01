@@ -3,12 +3,38 @@ html(lang="en")
         meta(charset="UTF-8")
         meta(http-equiv="X-UA-Compatible" content="IE=edge")
         meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
         link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css")
         link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer")
-        link(rel="stylesheet", href="/styles/style.css")
+        link(rel="stylesheet" href="/styles/style.css")
         title User Stories
     body
+        .navbar-container
+            nav.teal.darken-3
+                .nav-wrapper
+                    a.brand-logo(href='#!') User Stories
+                    a.sidenav-trigger(href='#' data-target='mobile-demo')
+                        i.material-icons menu
+                    ul.right.hide-on-med-and-down
+                        li.active
+                            a(href='/dashboard') Dashboard
+                        li
+                            a(href='/stories') Public Stories
+                        li
+                            a(href='/auth/logout') Logout
+                    ul#mobile-demo.sidenav
+                        li
+                            a(href='/dashboard') Dashboard
+                        li
+                            a(href='/stories') Public Stories
+                        li
+                            a(href='/auth/logout') Logout
+
         .container
             block dashboard
-
+        script(type = "text/javascript" src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js")
         script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js")
+        script.
+            $(document).ready(function(){
+                $('.sidenav').sidenav();
+            });

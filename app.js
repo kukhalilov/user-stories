@@ -9,6 +9,8 @@ const session = require("express-session");
 const mongoose = require("mongoose");
 const MongoStore = require('connect-mongo')
 const app = express();
+app.locals.moment = require('moment');
+
 const PORT = process.env.PORT || 3000;
 
 // Load config

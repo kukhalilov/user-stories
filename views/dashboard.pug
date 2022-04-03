@@ -5,9 +5,6 @@ block dashboard
     h3 Welcome #{name}
     p Here are your stories
     if stories.length
-        //- p
-        //-     each story in stories
-        //-         span #{story.title}
         table
             thead
                 tr
@@ -22,7 +19,7 @@ block dashboard
                             a(href='/stories/#{story._id}')
                             span #{story.title}
                         td
-                            span #{story.createdAt}
+                            span #{moment(story.createdAt).format('MMMM Do YYYY, h:mm:ss a')}
                         td
                             span.dash-status #{story.status}
                         td

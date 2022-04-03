@@ -6,11 +6,16 @@ const path = require("path");
 const pug = require("pug");
 const passport = require("passport");
 const session = require("express-session");
+const mongoose = require("mongoose");
+const MongoStore = require('connect-mongo')
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Load config
 dotenv.config({ path: "./config/config.env" });
+
+// Body parser
+app.use(express.urlencoded({extended: false}))
 
 // Sessions
 app.use(
@@ -18,6 +23,9 @@ app.use(
     secret: "keyboard cat",
     resave: false,
     saveUninitialized: false,
+    store: MongoStore.create({
+        mongoUrl: process.env.MONGO_URI
+    })
   })
 );
 
@@ -37,6 +45,7 @@ app.use(passport.session());
 // Routes
 app.use("/", require("./routes/index"));
 app.use("/auth", require("./routes/auth"));
+app.use("/stories", require("./routes/stories"));
 
 // Static assets
 app.use(express.static(path.join(__dirname, "public")));

@@ -46,3 +46,21 @@ nav {
 .divider {
   margin: 8px 0 !important;
 }
+
+form input.btn, a.btn {
+    margin-right: 12px;
+}
+
+form a.btn:hover {
+    background-color: red !important;
+}
+
+textarea#body {
+  border: 1px solid #aaa;
+  resize: none;
+  transition: outline 0.1s;
+}
+
+textarea#body:focus {
+  outline: 2px solid #26A69B;
+}

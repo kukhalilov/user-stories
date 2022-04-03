@@ -1,4 +1,30 @@
 extends layouts/main.pug
 
 block dashboard
-    h1 Dashboard
+    h5 Dashboard
+    h3 Welcome #{name}
+    p Here are your stories
+    if stories.length
+        //- p
+        //-     each story in stories
+        //-         span #{story.title}
+        table
+            thead
+                tr
+                    th Title
+                    th Date
+                    th Status
+                    th
+            tbody
+                 each story of stories
+                    tr
+                        td
+                            a(href='/stories/#{story._id}')
+                            span #{story.title}
+                        td
+                            span #{story.createdAt}
+                        td
+                            span.dash-status #{story.status}
+                        td
+    else
+        p You haven't created any stories

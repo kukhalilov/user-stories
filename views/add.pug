@@ -5,8 +5,15 @@ block add
         form.col.s12(action="/stories" method="POST")
             .row
                 .input-field
-                    input#title(type="text" name="title")
+                    if errors
+                        input#title(type="text" name="title" value=formData.title)
+                    else
+                        input#title(type="text" name="title")
                     label(for="title") Title
+                    if errors
+                        each error in errors
+                            if error.param=='title'
+                                p.help.is-danger #{error.msg}
 
             .row
                 .input-field
@@ -18,8 +25,17 @@ block add
             .row
                 .input-field
                     h5 Write Your Story
-                    textarea#body(name="body" style="height:250px;")
+                    if errors
+                        textarea#storyBody(name="storyBody" style="height:250px;") #{formData.storyBody}
+                    else
+                        textarea#storyBody(name="storyBody" style="height:250px;")
+                    if errors
+                        each error in errors
+                            if error.param=='storyBody'
+                                p.help.is-danger #{error.msg}
+
 
             .row
                 input.btn(type="submit" value="Save")
                 a.btn.red.darken-4(href="/dashboard") Cancel
+

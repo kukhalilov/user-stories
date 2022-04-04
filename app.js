@@ -16,7 +16,10 @@ const PORT = process.env.PORT || 3000;
 // Load config
 dotenv.config({ path: "./config/config.env" });
 
-// Body parser
+// Set view engine
+app.set('views', __dirname + '/views');
+app.set("view engine", "pug");
+
 app.use(express.urlencoded({extended: false}))
 
 // Sessions
@@ -36,9 +39,6 @@ require("./config/passport")(passport);
 
 // Connect to database
 connectDB();
-
-// Set view engine
-app.set("view engine", "pug");
 
 // Passport middleware
 app.use(passport.initialize());

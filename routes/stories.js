@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const { check, validationResult } = require("express-validator");
 
 const Story = require("../models/Story");
 
@@ -18,15 +19,40 @@ router.get("/add", ensureAuth, (req, res) => {
 });
 
 // Form manipulation
-router.post("/", ensureAuth, async (req, res) => {
-  try {
-    req.body.user = req.user.id;
-    await Story.create(req.body);
-    res.redirect("/dashboard");
-  } catch (err) {
-    console.error(err);
-    res.render('error/500')
+router.post(
+  "/",
+  ensureAuth,
+
+  [check("title")
+    .trim()
+    .isLength({ min: 5 })
+    .withMessage("Must be at least 5 characters long"),
+  check("storyBody")
+    .trim()
+    .isLength({ min: 30 })
+    .withMessage("Must be at least 30 characters long"),],
+
+  async (req, res) => {
+    try {
+      const errors = validationResult(req);
+      req.body.user = req.user.id;
+      let title = req.body.title;
+      let storyBody = req.body.storyBody;
+      if (!errors.isEmpty()) {
+        console.log(errors);
+        res.render("add", {errors: errors.array(), formData: {
+          title: title,
+          storyBody: storyBody,
+        }});
+      } else {
+        await Story.create(req.body);
+        res.redirect("/dashboard");
+      }
+    } catch (err) {
+      console.error(err);
+      res.render("error/500");
+    }
   }
-});
+);
 
 module.exports = router;

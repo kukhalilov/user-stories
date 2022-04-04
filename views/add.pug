@@ -13,7 +13,7 @@ block add
                     if errors
                         each error in errors
                             if error.param=='title'
-                                p.help.is-danger #{error.msg}
+                                p.error #{error.msg}
 
             .row
                 .input-field
@@ -32,7 +32,7 @@ block add
                     if errors
                         each error in errors
                             if error.param=='storyBody'
-                                p.help.is-danger #{error.msg}
+                                p.error #{error.msg}
 
 
             .row

@@ -5,28 +5,28 @@
 }
 
 html {
-    display: flex;
-    justify-content: center;
-    height: 100vh;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
 }
 
 body {
-    width: 100vw;
+  width: 100vw;
 }
 
 .main-block {
-   max-width: 1100px;
+  max-width: 1100px;
 }
 
 nav {
-    padding-left: 25px !important;
-    padding-right: 25px !important;
+  padding-left: 25px !important;
+  padding-right: 25px !important;
 }
 
 .navbar-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .login-container {
@@ -47,12 +47,13 @@ nav {
   margin: 8px 0 !important;
 }
 
-form input.btn, a.btn {
-    margin-right: 12px;
+form input.btn,
+a.btn {
+  margin-right: 12px;
 }
 
 form a.btn:hover {
-    background-color: red !important;
+  background-color: red !important;
 }
 
 textarea#body {
@@ -62,5 +63,26 @@ textarea#body {
 }
 
 textarea#body:focus {
-  outline: 2px solid #26A69B;
+  outline: 2px solid #26a69b;
+}
+
+.error {
+  color: white;
+  background: #c51244 !important;
+  padding: 10px !important;
+  border-radius: 0 !important;
+  position: relative;
+  display: inline-block !important;
+  box-shadow: 1px 1px 1px #aaaaaa;
+  margin-top: 10px;
+}
+.error:before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #c51244;
+  position: absolute;
+  top: -10px;
 }

@@ -15,7 +15,7 @@ function ensureAuth(req, res, next) {
 
 // Add page
 router.get("/add", ensureAuth, (req, res) => {
-  res.render("add");
+  res.render("add", {page: 'add'});
 });
 
 // Form manipulation
@@ -43,6 +43,7 @@ router.post(
       if (!errors.isEmpty()) {
         console.log(errors);
         res.render("add", {
+          page: 'add',
           errors: errors.array(),
           formData: {
             title: title,
@@ -70,6 +71,7 @@ router.get("/", ensureAuth, async (req, res) => {
 
     res.render("stories", {
       stories,
+      page: 'stories'
     });
   } catch (err) {
     console.error(err);

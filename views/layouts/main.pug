@@ -16,25 +16,26 @@ html(lang="en")
                     a.sidenav-trigger(href='#' data-target='mobile-demo')
                         i.material-icons menu
                     ul.right.hide-on-med-and-down
-                        li.active
+                        li(class=(page === "dashboard" ? "active" : undefined))
                             a(href='/dashboard') Dashboard
-                        li
+                        li(class=(page === "add" ? "active" : undefined))
+                            a(href='/stories/add') Add Story
+                        li(class=(page === "stories" ? "active" : undefined))
                             a(href='/stories') Public Stories
                         li
                             a(href='/auth/logout') Logout
                     ul#mobile-demo.sidenav
-                        li
+                        li(class=(page === "dashboard" ? "active" : undefined))
                             a(href='/dashboard') Dashboard
-                        li
+                        li(class=(page === "add" ? "active" : undefined))
+                            a(href='/stories/add') Add Story
+                        li(class=(page === "stories" ? "active" : undefined))
                             a(href='/stories') Public Stories
                         li
                             a(href='/auth/logout') Logout
 
         .main-container
             .main-block
-                .fixed-action-btn
-                    a.btn-floating.btn-large.wawes-effect.wawes-light(href="/stories/add")
-                        i.fas.fa-plus
                 .container
                     block dashboard
                     block add
@@ -49,4 +50,13 @@ html(lang="en")
                     $(document).ready(function(){
                         $('.sidenav').sidenav();
                         $('#status').formSelect();
+                        $('ul.right li').on('click', function(){
+                            var clicked = $(this);
+                            $('ul.right li').each(function(){
+                                if($(this).hasClass('active')){
+                                    $(this).removeClass('active');
+                                }
+                            });
+                            $(this).addClass('active');
+                        });
                     });

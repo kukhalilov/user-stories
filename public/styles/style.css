@@ -103,7 +103,7 @@ nav {
   font-style: italic;
 }
 
-form input.btn,
+form input.btn, form
 a.btn {
   margin-right: 12px;
   margin-bottom: 20px;

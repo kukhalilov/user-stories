@@ -8,6 +8,7 @@ const passport = require("passport");
 const session = require("express-session");
 const mongoose = require("mongoose");
 const MongoStore = require('connect-mongo')
+const methodOverride = require('method-override')
 const app = express();
 app.locals.moment = require('moment');
 
@@ -21,6 +22,14 @@ app.set('views', __dirname + '/views');
 app.set("view engine", "pug");
 
 app.use(express.urlencoded({extended: false}))
+
+app.use(methodOverride(function (req, res) {
+  if (req.body && typeof req.body === 'object' && '_method' in req.body) {
+    var method = req.body._method
+    delete req.body._method
+    return method
+  }
+}))
 
 // Sessions
 app.use(

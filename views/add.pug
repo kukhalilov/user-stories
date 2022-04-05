@@ -26,12 +26,12 @@ block add
                 .input-field
                     h5 Write Your Story
                     if errors
-                        textarea#storyBody(name="storyBody" style="height:250px;") #{formData.storyBody}
+                        textarea#body(name="body" style="height:250px;") #{formData.body}
                     else
-                        textarea#storyBody(name="storyBody" style="height:250px;")
+                        textarea#body(name="body" style="height:250px;")
                     if errors
                         each error in errors
-                            if error.param=='storyBody'
+                            if error.param=='body'
                                 p.error #{error.msg}
 
 

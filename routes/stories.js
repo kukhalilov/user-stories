@@ -97,17 +97,22 @@ router.get("/:id", ensureAuth, async (req, res) => {
 
 // Story edit page
 router.get("/edit/:id", ensureAuth, async (req, res) => {
-  const story = await Story.findOne({
-    _id: req.params.id,
-  }).lean();
+  try {
+    const story = await Story.findOne({
+      _id: req.params.id,
+    }).lean();
 
-  if (!story) {
-    res.render("error/404");
+    if (!story) {
+      res.render("error/404");
+    }
+
+    res.render("edit", {
+      story,
+    });
+  } catch (err) {
+    console.error(err);
+    res.render("error/500");
   }
-
-  res.render("edit", {
-    story,
-  });
 });
 
 // Update Story
@@ -147,10 +152,9 @@ router.put(
           formData: {
             title: title,
             body: body,
-            status: status
+            status: status,
           },
         });
-
       } else {
         story = await Story.findOneAndUpdate({ _id: req.params.id }, req.body, {
           new: true,
@@ -165,5 +169,16 @@ router.put(
     }
   }
 );
+
+// Delete story
+router.delete('/:id', ensureAuth, async(req, res) => {
+  try {
+    await Story.deleteOne({_id: req.params.id})
+    res.redirect('/dashboard')
+  } catch (err) {
+    console.error(err)
+    res.render('error/500')
+  }
+})
 
 module.exports = router;

@@ -13,7 +13,7 @@ block dashboard
                     th Status
                     th Action
             tbody
-                 each story of stories
+                each story of stories
                     tr
                         td
                             a(href=`/stories/${story._id}`)
@@ -22,8 +22,13 @@ block dashboard
                             span #{moment(story.createdAt).format('MMMM Do YYYY, h:mm:ss a')}
                         td
                             span.dash-status #{story.status}
-                        td
-                            a.btn.btn-action(href=`/stories/edit/${story._id}`)
+                        td.action
+                            a.btn(href=`/stories/edit/${story._id}`)
                                 i.fa-solid.fa-square-pen
+
+                            form#delete-form(action=`/stories/${story._id}`, method="POST")
+                                input(type="hidden", name="_method" value="DELETE")
+                                button.btn.red.accent-4(type="submit")
+                                    i.fa-solid.fa-trash-can
     else
         p.dashboard You haven't created any stories

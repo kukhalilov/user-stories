@@ -103,6 +103,21 @@ nav {
   font-style: italic;
 }
 
+td.action {
+  display: flex;
+  justify-content: space-around;
+}
+
+@media (max-width: 400px) {
+  td.action {
+    flex-direction: column;
+  }
+}
+
+.fixed-action-btn {
+  right: calc() !important;
+}
+
 form input.btn, form
 a.btn {
   margin-right: 12px;

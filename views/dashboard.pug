@@ -1,9 +1,9 @@
 extends layouts/main.pug
 
 block dashboard
-    h5 Dashboard
-    h3 Welcome #{name}
-    p Here are your stories
+    h5.dashboard Dashboard
+    h3.dashboard Welcome #{name}
+    p.dashboard Here are your stories
     if stories.length
         table
             thead
@@ -24,4 +24,4 @@ block dashboard
                             span.dash-status #{story.status}
                         td
     else
-        p You haven't created any stories
+        p.dashboard You haven't created any stories

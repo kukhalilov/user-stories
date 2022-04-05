@@ -1,0 +1,22 @@
+extends layouts/main.pug
+
+block stories
+    h2.center-align Stories
+    .row
+        if stories
+            each story in stories
+                .card-block.col.s12.m6.l4
+                    .card
+                        .card-image
+                        .card-content.center-align
+                            h5 #{story.title}
+                            .storyBody
+                                p #{story.body}
+                            br
+                            .chip
+                                img(src=story.user.image alt="Avatar")
+                                span #{story.user.displayName}
+                    .center-align
+                        a.btn(href="/stories/#{story._id}") Read More
+        else
+            p There are no stories to display

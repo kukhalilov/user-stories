@@ -17,8 +17,12 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  stories: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Story' }],
   image: {
-    type: String,
+    data: Buffer,
+    contentType: String
   },
   createdAt: {
     type: Date,

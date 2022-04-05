@@ -100,6 +100,11 @@ nav {
   font-style: italic;
 }
 
+.statement {
+  padding: 12px;
+  color: #fff;
+}
+
 .active a {
   color: #d9ff00 !important;
 }

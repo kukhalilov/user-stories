@@ -17,6 +17,6 @@ block stories
                                 img(src=story.user.image alt="Avatar")
                                 span #{story.user.displayName}
                     .center-align
-                        a.btn(href="/stories/#{story._id}") Read More
+                        a.btn(href=`/stories/${story._id}`) Read More
         else
             p There are no stories to display

@@ -77,4 +77,24 @@ router.get("/", ensureAuth, async (req, res) => {
   }
 });
 
+// Show single story
+router.get("/:id", ensureAuth, async (req, res) => {
+  try {
+    let story = await Story.findById(req.params.id)
+    .populate('user')
+    .lean()
+
+    if (!story) {
+      return res.render('error/404')
+    }
+
+    res.render('show', {
+      story
+    })
+  } catch (err) {
+    console.error(err)
+    res.render('error/404')
+  }
+});
+
 module.exports = router;

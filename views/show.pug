@@ -1,0 +1,10 @@
+extends layouts/main.pug
+
+block show
+    h2.center-align #{story.title}
+    p.center-align by
+    h5.italic.center-align #{story.user.displayName}
+    br
+    .divider
+    br
+    p.single-story-body #{story.body}

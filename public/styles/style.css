@@ -125,7 +125,7 @@ form a.btn:hover {
   background-color: red !important;
 }
 
-textarea#storyBody {
+textarea#body {
   border: 1px solid #aaa;
   resize: none;
   transition: outline 0.1s;

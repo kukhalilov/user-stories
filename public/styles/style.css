@@ -18,6 +18,8 @@ body {
 
 .navbar-container {
   width: 1100px;
+  display: flex;
+  justify-content: center;
 }
 
 @media (max-width: 993px) {
@@ -40,11 +42,6 @@ nav {
     padding-left: 5px !important;
     padding-right: 5px !important;
   }
-}
-
-.navbar-container {
-  display: flex;
-  justify-content: center;
 }
 
 .login-container {
@@ -101,6 +98,10 @@ nav {
 
 .italic {
   font-style: italic;
+}
+
+.active a {
+  color: #d9ff00 !important;
 }
 
 td.action {

@@ -58,8 +58,8 @@ npm run dev
 
 ## Link to github repository
 
-https://github.com/00012256/WT-CW2
+https://github.com/kukhalilov/user-stories
 
 ## Link to hosted web app
 
-https://achieved-kaput-wedge.glitch.me/
+https://user-stories-by-kuvonchbek.herokuapp.com/
